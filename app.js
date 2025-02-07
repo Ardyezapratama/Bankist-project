@@ -73,12 +73,13 @@ const currencies = new Map([
 	["GBP", "Pound sterling"],
 ]);
 
-const movements = [
-	500000, 1500000, -1000000, 600000, -750000, -300000, 2500000,
-];
+// const movements = [
+// 	500000, 1500000, -1000000, 600000, -750000, -300000, 2500000,
+// ];
 
 ///////////////////////////////////////////////////////////////////////
 
+/*
 let arr = ["a", "b", "c", "d", "e"];
 
 // NOTE: SLICE METHOD of array instance returns a shallow copy (copy properties share the same references) of a portion of an array into a new array object selected from start to  end (end not included);
@@ -111,3 +112,30 @@ console.log(arr3);
 
 // NOTE: Join method creates and retruns a new string by concatening all of the elements in the array
 console.log(arr3.join(" - "));
+*/
+
+// NOTE: Looping arrays forEach,
+
+const movements = [
+	500000, 1500000, -1000000, 600000, -750000, -300000, 2500000,
+];
+
+// for of loops
+// for (const movement of movements) {
+for (const [i, movement] of movements.entries()) {
+	if (movement > 0) {
+		console.log(`Movement ${i + 1} Yout deposited ${movement}`);
+	} else {
+		console.log(`Movement ${i + 1} Yout withdraw ${Math.abs(movement)}`);
+	}
+}
+
+// forEach
+console.log("-------- forEach ----------");
+movements.forEach(function (movement, idx) {
+	if (movement > 0) {
+		console.log(`Movement ${idx + 1} You deposited ${movement}`);
+	} else {
+		console.log(`Movement ${idx + 1} You withdraw ${Math.abs(movement)}`);
+	}
+});
