@@ -63,3 +63,20 @@ const inputTranferAmount = document.querySelector(".form__input--amount");
 const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
+
+const displayMovements = function (movements) {
+	containerMovements.innerHTML = "";
+	movements.forEach(function (mov, i) {
+		const type = mov > 0 ? "deposit" : "withdrawal";
+		const html = `
+			<div class="movements__row">
+				<div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+				<div class="movements__value">Rp. ${mov}</div>
+			</div>
+		`;
+		// insertAdjacentHTML is method of hte element interface parses the specified text as HTML or XML and inserts the resulting nodes into the DOM tree at a specified postition.
+		containerMovements.insertAdjacentHTML("afterbegin", html);
+	});
+};
+
+displayMovements(account1.movements);
