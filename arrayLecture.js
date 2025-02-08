@@ -93,3 +93,30 @@ currenciesUnique.forEach((value, _value, map) => {
 	console.log(`${_value}: ${value}`);
 });
 */
+
+// NOTE: Data transformation array method  map, filter and reduce
+
+// map: returns a new array containing the result of applying on operation on all original array elements.
+const euroToUsd = 1.03;
+
+const movementsUsd = movements.map((mov) => mov * euroToUsd);
+console.log(movements);
+console.log(movementsUsd);
+
+const movementsUsdForOf = [];
+for (const mov of movements) {
+	movementsUsdForOf.push(mov * euroToUsd);
+}
+
+console.log(movementsUsdForOf);
+
+const movementsDesc = movements.map(
+	(mov, idx) =>
+		`Movement ${idx + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+			mov
+		)}`
+);
+console.log(movementsDesc);
+
+// filter: returns a new array containing the array elements that passed specified test condition.
+// reduce: boils all array elements down to one single value (e.g adding all elements together)
