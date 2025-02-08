@@ -1,12 +1,5 @@
 // NOTE: LECTURES
 
-const currencies = new Map([
-	["IDR", "Indonesia rupiah"],
-	["USD", "United State dollar"],
-	["EUR", "Euro"],
-	["GBP", "Pound sterling"],
-]);
-
 // const movements = [
 // 	500000, 1500000, -1000000, 600000, -750000, -300000, 2500000,
 // ];
@@ -54,6 +47,7 @@ const movements = [
 	500000, 1500000, -1000000, 600000, -750000, -300000, 2500000,
 ];
 
+/*
 // for of loops
 // for (const movement of movements) {
 for (const [i, movement] of movements.entries()) {
@@ -72,4 +66,28 @@ movements.forEach(function (movement, idx) {
 	} else {
 		console.log(`Movement ${idx + 1} You withdraw ${Math.abs(movement)}`);
 	}
+});
+
+*/
+
+// NOTE: forEach with Maps and Sets
+
+// Maps
+const currencies = new Map([
+	["IDR", "Indonesia rupiah"],
+	["USD", "United State dollar"],
+	["EUR", "Euro"],
+	["GBP", "Pound sterling"],
+]);
+
+currencies.forEach((value, key, map) => {
+	console.log(`${key}: ${value}`);
+});
+
+// Sets
+
+const currenciesUnique = new Set(["IDR", "USD", "EUR", "GBP", "USD", "EUR"]);
+
+currenciesUnique.forEach((value, _value, map) => {
+	console.log(`${_value}: ${value}`);
 });
