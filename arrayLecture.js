@@ -70,6 +70,7 @@ movements.forEach(function (movement, idx) {
 
 */
 
+/*
 // NOTE: forEach with Maps and Sets
 
 // Maps
@@ -91,3 +92,4 @@ const currenciesUnique = new Set(["IDR", "USD", "EUR", "GBP", "USD", "EUR"]);
 currenciesUnique.forEach((value, _value, map) => {
 	console.log(`${_value}: ${value}`);
 });
+*/
