@@ -123,6 +123,7 @@ console.log(movementsDesc);
 // reduce: boils all array elements down to one single value (e.g adding all elements together)
 */
 
+/*
 // NOTE: Filter Methods
 
 // Deposits
@@ -143,3 +144,30 @@ console.log(deposits);
 // Witdrawals
 const witdrawals = movements.filter((mov) => mov < 0);
 console.log(witdrawals);
+*/
+
+/*
+// NOTE: Reduce Methods
+// const balance = movements.reduce(function (acc, curr, i, arr) {
+// 	console.log(`Iteration ${i}: ${acc} + ${curr}`);
+// 	return acc + curr;
+// }, 0);
+
+const balance = movements.reduce((acc, curr) => acc + curr);
+console.log(balance);
+
+let balance2 = 0;
+for (let mov of movements) balance2 += mov;
+console.log(balance2);
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+	if (acc > mov) {
+		return acc;
+	} else {
+		return mov;
+	}
+}, movements[0]);
+
+console.log(max);
+*/
