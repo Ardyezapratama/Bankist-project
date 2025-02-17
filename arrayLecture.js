@@ -122,3 +122,24 @@ console.log(movementsDesc);
 // filter: returns a new array containing the array elements that passed specified test condition.
 // reduce: boils all array elements down to one single value (e.g adding all elements together)
 */
+
+// NOTE: Filter Methods
+
+// Deposits
+const deposits = movements.filter(function (mov) {
+	return mov > 0;
+});
+
+console.log(deposits);
+
+// const depositFor = [];
+// for (let mov of movements) {
+// 	if (mov > 0) {
+// 		depositFor.push(mov);
+// 	}
+// }
+// console.log(depositFor);
+
+// Witdrawals
+const witdrawals = movements.filter((mov) => mov < 0);
+console.log(witdrawals);
