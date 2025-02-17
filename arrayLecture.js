@@ -94,6 +94,7 @@ currenciesUnique.forEach((value, _value, map) => {
 });
 */
 
+/*
 // NOTE: Data transformation array method  map, filter and reduce
 
 // map: returns a new array containing the result of applying on operation on all original array elements.
@@ -120,3 +121,4 @@ console.log(movementsDesc);
 
 // filter: returns a new array containing the array elements that passed specified test condition.
 // reduce: boils all array elements down to one single value (e.g adding all elements together)
+*/
