@@ -39,9 +39,9 @@ const accounts = [account1, account2, account3, account4];
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
 const labelBalance = document.querySelector(".balance__value");
-const labelSumIn = document.querySelector(".summary__label--in");
-const labelSumOut = document.querySelector(".summery__label--out");
-const labeSumInterest = document.querySelector(".summery__label--interest");
+const labelSumIn = document.querySelector(".summary__value--in");
+const labelSumOut = document.querySelector(".summary__value--out");
+const labeSumInterest = document.querySelector(".summary__value--interest");
 const labelTimer = document.querySelector(".timer");
 
 // container elements
@@ -88,6 +88,28 @@ const calcDisplayBalance = function (movements) {
 
 calcDisplayBalance(account1.movements);
 
+const calcDisplaySummary = function (movements) {
+	const incomes = movements
+		.filter((mov) => mov > 0)
+		.reduce((acc, mov) => acc + mov, 0);
+
+	const outcomes = movements
+		.filter((mov) => mov < 0)
+		.reduce((acc, mov) => acc + mov, 0);
+
+	const interest = movements
+		.filter((mov) => mov > 0)
+		.map((deposit) => (deposit * 1.2) / 100)
+		.filter((interest, idx, arr) => interest >= 14000)
+		.reduce((acc, interest) => acc + interest, 0);
+
+	labelSumIn.textContent = `Rp. ${incomes}`;
+	labelSumOut.textContent = `Rp. ${Math.abs(outcomes)}`;
+	labeSumInterest.textContent = `Rp. ${interest}`;
+};
+
+calcDisplaySummary(account1.movements);
+
 const createUsernames = function (accs) {
 	accs.forEach(function (acc) {
 		acc.username = acc.owner
@@ -99,5 +121,3 @@ const createUsernames = function (accs) {
 };
 
 createUsernames(accounts);
-
-console.log(accounts);
