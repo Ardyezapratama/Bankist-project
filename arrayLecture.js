@@ -171,3 +171,17 @@ const max = movements.reduce((acc, mov) => {
 
 console.log(max);
 */
+
+/*
+// NOTE: Chaining methods
+const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const euroToUsd = 1.03;
+
+// PIPELINE
+const totalDepositUsd = movements2
+	.filter((mov) => mov > 0)
+	.map((mov) => mov * euroToUsd)
+	.reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositUsd);
+*/
