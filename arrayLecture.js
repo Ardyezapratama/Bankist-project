@@ -185,3 +185,11 @@ const totalDepositUsd = movements2
 
 console.log(totalDepositUsd);
 */
+
+/*
+// NOTE: find methods => only retreive first element that match the argument
+
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+*/
