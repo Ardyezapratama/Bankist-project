@@ -9,7 +9,9 @@ const account1 = {
 
 const account2 = {
 	owner: "Jessica Davis",
-	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+	movements: [
+		8000000, 3500000, -1500000, -4300000, -500000, -1700000, 10000000, -5000000,
+	],
 	interestRate: 1.5,
 	pin: 2222,
 	type: "standard",
@@ -17,7 +19,9 @@ const account2 = {
 
 const account3 = {
 	owner: "Steven Thomas Williams",
-	movements: [200, -200, 340, -300, -20, 50, 400, -460],
+	movements: [
+		3500000, -3500000, 5800000, -5000000, -340000, 850000, 6800000, -7800000,
+	],
 	interestRate: 0.7,
 	pin: 3333,
 	type: "premium",
@@ -25,7 +29,7 @@ const account3 = {
 
 const account4 = {
 	owner: "Sarah Smith",
-	movements: [430, 1000, 700, 50, 90],
+	movements: [7300000, 17000000, 5300000, 750000, 900000],
 	interestRate: 1,
 	pin: 4444,
 	type: "basic",
@@ -79,9 +83,9 @@ const displayMovements = function (movements) {
 	});
 };
 
-const calcDisplayBalance = function (movements) {
-	const balance = movements.reduce((acc, curr) => acc + curr, 0);
-	labelBalance.textContent = `Rp. ${balance}`;
+const calcDisplayBalance = function (acc) {
+	acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
+	labelBalance.textContent = `Rp. ${acc.balance}`;
 };
 
 const calcDisplaySummary = function (acc) {
@@ -117,6 +121,16 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 
+// NOTE: Function display UI
+const updateUI = function (acc) {
+	// Display movements
+	displayMovements(acc.movements);
+	// Display balance
+	calcDisplayBalance(acc);
+	// Display summary
+	calcDisplaySummary(acc);
+};
+
 // NOTE: Login event handler
 let currentAccount;
 loginBtn.addEventListener("click", function (e) {
@@ -137,11 +151,37 @@ loginBtn.addEventListener("click", function (e) {
 		inputLoginUsername.value = inputLoginPass.value = "";
 		inputLoginPass.blur();
 
-		// Display movements
-		displayMovements(currentAccount.movements);
-		// Display balance
-		calcDisplayBalance(currentAccount.movements);
-		// Display summary
-		calcDisplaySummary(currentAccount);
+		// Update UI
+		updateUI(currentAccount);
+	}
+});
+
+// Implementing transfers
+transferBtn.addEventListener("click", function (e) {
+	e.preventDefault();
+
+	// amount to transfer
+	const amount = Number(inputTranferAmount.value);
+	// User Receiver
+	const receiverAcc = accounts.find(
+		(acc) => acc.username === inputTranferTo.value
+	);
+
+	if (
+		amount > 0 &&
+		receiverAcc &&
+		currentAccount.balance >= amount &&
+		receiverAcc?.username !== currentAccount.username
+	) {
+		// Doing the transfers
+		currentAccount.movements.push(-amount);
+		receiverAcc.movements.push(amount);
+
+		// Update UI
+		updateUI(currentAccount);
+
+		//Clear transfer input fields
+		inputTranferTo.value = inputTranferAmount.value = "";
+		inputTranferAmount.blur();
 	}
 });
