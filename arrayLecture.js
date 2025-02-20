@@ -225,3 +225,15 @@ const deposit = (mov) => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.filter(deposit));
 */
+
+/*
+// NOTE: flat and flatMap method
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// flat method
+const flatArr = arr.flat();
+console.log(flatArr);
+const flatArrDeep = arrDeep.flat(2);
+console.log(flatArrDeep);
+*/
