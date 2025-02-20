@@ -68,6 +68,22 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+/*
+// NOTE: all accounts balance
+// 1
+const overalBalance = accounts
+	.map((acc) => acc.movements)
+	.flat()
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+// 2
+const overalBalance2 = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2);
+*/
+
 const displayMovements = function (movements) {
 	containerMovements.innerHTML = "";
 	movements.forEach(function (mov, i) {
