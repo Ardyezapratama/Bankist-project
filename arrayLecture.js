@@ -204,3 +204,24 @@ console.log(lastWithdrawal);
 const lastIndexWithdrawal = movements.findLastIndex((mov) => mov < 0);
 console.log(lastIndexWithdrawal);
 */
+
+/*
+// NOTE: some and every method
+
+console.log(movements);
+// includes method (Equality)
+console.log(movements.includes(-300000));
+
+// some method (Condition)
+const anyDeposit = movements.some((mov) => mov > 2000000);
+console.log(anyDeposit);
+
+// every method
+const everyDeposit = movements.every((mov) => mov > 0);
+console.log(everyDeposit); // false becaouse all movements is not deposit
+
+// Separate callback
+const deposit = (mov) => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.filter(deposit));
+*/
