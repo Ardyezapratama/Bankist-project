@@ -193,3 +193,14 @@ const firstWithdrawal = movements.find((mov) => mov < 0);
 console.log(movements);
 console.log(firstWithdrawal);
 */
+
+/*
+// NOTE: findLast and findLastIndex method
+
+console.log(movements);
+const lastWithdrawal = movements.findLast((mov) => mov < 0);
+console.log(lastWithdrawal);
+
+const lastIndexWithdrawal = movements.findLastIndex((mov) => mov < 0);
+console.log(lastIndexWithdrawal);
+*/
