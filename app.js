@@ -84,9 +84,14 @@ const overalBalance2 = accounts
 console.log(overalBalance2);
 */
 
-const displayMovements = function (movements) {
+// NOTE: Display Movements
+const displayMovements = function (movements, sort = false) {
 	containerMovements.innerHTML = "";
-	movements.forEach(function (mov, i) {
+
+	// Sorting the movements
+	const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+	movs.forEach(function (mov, i) {
 		const type = mov > 0 ? "deposit" : "withdrawal";
 		const html = `
 			<div class="movements__row">
@@ -99,11 +104,13 @@ const displayMovements = function (movements) {
 	});
 };
 
+// NOTE: Calculate and display balance
 const calcDisplayBalance = function (acc) {
 	acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
 	labelBalance.textContent = `Rp. ${acc.balance}`;
 };
 
+// NOTE: Calculate and display summary
 const calcDisplaySummary = function (acc) {
 	const incomes = acc.movements
 		.filter((mov) => mov > 0)
@@ -245,4 +252,12 @@ closeAccBtn.addEventListener("click", function (e) {
 		inputCloseUsername.value = inputClosePin.value = "";
 		inputClosePin.blur();
 	}
+});
+
+// NOTE: Button sort handling
+let sorted = false;
+sortBtn.addEventListener("click", function (e) {
+	e.preventDefault();
+	displayMovements(currentAccount.movements, !sorted);
+	sorted = !sorted;
 });
