@@ -237,3 +237,35 @@ console.log(flatArr);
 const flatArrDeep = arrDeep.flat(2);
 console.log(flatArrDeep);
 */
+
+/*
+// NOTE: Sorting array
+
+// sort method (mutating original array)
+// Strings
+const owner = ["Jonas", "Zach", "Adam", "Martha"];
+console.log(owner.sort());
+console.log(owner);
+
+// Numbers
+console.log(movements);
+
+// returns < 0, A, B
+// returns > 0, B, A
+
+// Ascending
+// movements.sort((a, b) => {
+// 	if (a > b) return 1;
+// 	if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+// 	if (a > b) return -1;
+// 	if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
+*/
