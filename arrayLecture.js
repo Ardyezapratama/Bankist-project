@@ -269,3 +269,67 @@ console.log(movements);
 movements.sort((a, b) => b - a);
 console.log(movements);
 */
+
+/*
+// NOTE: Array grouping
+console.log(movements);
+
+const groupedMovements = Object.groupBy(movements, (movement) =>
+	movement > 0 ? "deposit" : "withdrawals"
+);
+
+console.log(groupedMovements);
+
+// NOTE: Data
+const account_1 = {
+	owner: "Eza Pratama",
+	movements: [500000, 1500000, -1000000, 600000, -750000, -300000, 2500000],
+	interestRate: 1.2, // in %
+	pin: 123456,
+	type: "premium",
+};
+
+const account_2 = {
+	owner: "Jessica Davis",
+	movements: [
+		8000000, 3500000, -1500000, -4300000, -500000, -1700000, 10000000, -5000000,
+	],
+	interestRate: 1.5,
+	pin: 2222,
+	type: "standard",
+};
+
+const account_3 = {
+	owner: "Steven Thomas Williams",
+	movements: [
+		3500000, -3500000, 5800000, -5000000, -340000, 850000, 6800000, -7800000,
+	],
+	interestRate: 0.7,
+	pin: 3333,
+	type: "premium",
+};
+
+const account_4 = {
+	owner: "Sarah Smith",
+	movements: [7300000, 17000000],
+	interestRate: 1,
+	pin: 4444,
+	type: "basic",
+};
+
+const account_s = [account_1, account_2, account_3, account_4];
+
+const groupedByActivity = Object.groupBy(account_s, (account) => {
+	const movementCount = account.movements.length;
+
+	if (movementCount >= 8) return "very active";
+	if (movementCount >= 4) return "active";
+	if (movementCount >= 1) return "moderate";
+});
+
+console.log(groupedByActivity);
+
+const groupedAccounts = Object.groupBy(account_s, ({ type }) => type);
+console.log(groupedAccounts);
+
+*/
