@@ -425,6 +425,7 @@ labelBalance.addEventListener("click", function () {
 });
 */
 
+/*
 // More Array Methods Practice
 console.log(accounts.flatMap((acc) => acc.movements));
 // 1
@@ -487,3 +488,4 @@ const convertTitleCase = function (title) {
 console.log(convertTitleCase("this is a nice title"));
 console.log(convertTitleCase("this is a LONG title but not too long"));
 console.log(convertTitleCase("and here is another title with an EXAMPLE"));
+*/
