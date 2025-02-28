@@ -279,7 +279,7 @@ const groupedMovements = Object.groupBy(movements, (movement) =>
 );
 
 console.log(groupedMovements);
-
+*/
 // NOTE: Data
 const account_1 = {
 	owner: "Eza Pratama",
@@ -318,7 +318,7 @@ const account_4 = {
 };
 
 const account_s = [account_1, account_2, account_3, account_4];
-
+/*
 const groupedByActivity = Object.groupBy(account_s, (account) => {
 	const movementCount = account.movements.length;
 
@@ -332,4 +332,95 @@ console.log(groupedByActivity);
 const groupedAccounts = Object.groupBy(account_s, ({ type }) => type);
 console.log(groupedAccounts);
 
+*/
+
+/*
+// NOTE: More ways of creating and filling arrays
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x);
+
+x.fill(1, 3, 5);
+console.log(x);
+
+arr.fill(23, 4, 5);
+console.log(arr);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, () => Math.floor(Math.random() * 6) + 1);
+console.log(z);
+*/
+
+/*
+// NOTE: Non-destructive alternative: toReversed, toSorted, toSpliced, toMapped, toFiltered, toReduced, toFinded, toSome, toEvery, toFlat, toSorted, toFilled, toFromed
+
+// toReversed (reverse)
+console.log(movements);
+console.log("=".repeat(35) + "toReversed" + "=".repeat(35));
+const reversedMov = movements.toReversed();
+console.log(reversedMov);
+console.log(movements);
+
+// toSorted (sort)
+console.log("=".repeat(35) + "toSorted" + "=".repeat(35));
+const sortedMov = movements.toSorted((a, b) => a - b);
+console.log(sortedMov);
+console.log(movements);
+
+// toSpliced (splice)
+console.log("=".repeat(35) + "toSpliced" + "=".repeat(35));
+const splicedMov = movements.toSpliced(2);
+console.log(splicedMov);
+console.log(movements);
+
+// with
+console.log("=".repeat(35) + "with" + "=".repeat(35));
+const newMov = movements.with(1, 1250000);
+console.log(newMov);
+console.log(movements);
+*/
+
+/*
+// Manual using for loop
+function positiveSumFor(arr) {
+	let result = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] > 0) {
+			result += arr[i];
+		}
+	}
+	return result;
+}
+
+console.log(positiveSumFor([1, -4, 7, 12])); // 20
+
+// Chaining
+function positiveSum(arr) {
+	return arr.filter((num) => num > 0).reduce((a, b) => a + b);
+}
+*/
+
+// Lectures Arry.from
+/*
+labelBalance.addEventListener("click", function () {
+	const movementsUI = Array.from(
+		document.querySelectorAll(".movements__value"),
+		(el) => Number(el.textContent.replace("Rp. ", ""))
+	);
+
+	console.log(movementsUI);
+
+	const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+
+	console.log(
+		movementsUI2.map((el) => Number(el.textContent.replace("Rp. ", "")))
+	);
+});
 */
