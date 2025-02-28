@@ -424,3 +424,66 @@ labelBalance.addEventListener("click", function () {
 	);
 });
 */
+
+// More Array Methods Practice
+console.log(accounts.flatMap((acc) => acc.movements));
+// 1
+const bankDepositSum = accounts
+	.flatMap((acc) => acc.movements)
+	.filter((mov) => mov > 0)
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(bankDepositSum);
+
+// 2
+console.log(
+	accounts.flatMap((acc) => acc.movements).filter((mov) => mov >= 2000000)
+);
+// using filter
+const numDeposits2000000 = accounts
+	.flatMap((acc) => acc.movements)
+	.filter((mov) => mov >= 2000000).length;
+
+console.log(numDeposits2000000);
+
+// using reduce
+const numDepositsReduce = accounts
+	.flatMap((acc) => acc.movements)
+	// .reduce((acc, mov) => (mov >= 2000000 ? acc + 1 : acc), 0);
+	.reduce((acc, mov) => (mov >= 2000000 ? ++acc : acc), 0);
+console.log(numDepositsReduce);
+
+// Prefixed ++ operator
+let a = 10;
+console.log(++a);
+console.log(a);
+
+// 3
+const { deposits, withdrawals } = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce(
+		(sums, cur) => {
+			// cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+			sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
+			return sums;
+		},
+		{ deposits: 0, withdrawals: 0 }
+	);
+
+console.log(deposits, withdrawals);
+
+// 4
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+	const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+	const exception = ["a", "an", "the", "but", "or", "on", "in", "with"];
+	const titleCase = title
+		.toLowerCase()
+		.split(" ")
+		.map((word) => (exception.includes(word) ? word : capitalize(word)))
+		.join(" ");
+	return titleCase;
+};
+
+console.log(convertTitleCase("this is a nice title"));
+console.log(convertTitleCase("this is a LONG title but not too long"));
+console.log(convertTitleCase("and here is another title with an EXAMPLE"));
