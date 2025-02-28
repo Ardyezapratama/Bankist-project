@@ -228,6 +228,7 @@ HINT 2: Being within a range 10% above and below the recommended portion means: 
 GOOD LUCK 😀
 */
 
+/*
 // TEST DATA:
 const dogs = [
 	{ weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
@@ -319,3 +320,4 @@ console.log(groupByOwners);
 // 10
 const sortedDogs = dogs.toSorted((a, b) => a.recFood - b.recFood);
 console.log(sortedDogs);
+*/
