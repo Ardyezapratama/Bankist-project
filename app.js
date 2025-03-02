@@ -240,8 +240,8 @@ const updateUI = function (acc) {
 
 // Log out timer
 const startLogOutTimer = function () {
-  //Set time 5 minutes
-  let time = 10;
+  //Set time 10 minutes
+  let time = 600;
 
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -340,6 +340,9 @@ transferBtn.addEventListener("click", function (e) {
     // Update UI
     updateUI(currentAccount);
 
+    clearInterval(timer);
+    timer = startLogOutTimer();
+
     //Clear transfer input fields
     inputTranferTo.value = inputTranferAmount.value = "";
     inputTranferAmount.blur();
@@ -366,6 +369,9 @@ loanBtn.addEventListener("click", function (e) {
       // Update UI
       updateUI(currentAccount);
     }, 2500);
+
+    clearInterval(timer);
+    timer = startLogOutTimer();
 
     // Clear load input fields
     inputLoanAmount.value = "";
