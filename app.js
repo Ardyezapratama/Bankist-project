@@ -149,6 +149,13 @@ const formatMovementDate = function (date, locale) {
 };
 
 // NOTE: formater currency
+const formatCurr = (movement, currency, locale) => {
+  const options = {
+    style: "currency",
+    currency: currency,
+  };
+  return new Intl.NumberFormat(locale, options).format(movement);
+};
 
 // NOTE: Display Movements
 const displayMovements = function (acc, sort = false) {
@@ -173,7 +180,7 @@ const displayMovements = function (acc, sort = false) {
 			<div class="movements__row">
 				<div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
 				<div class="date"> ${formatedDate} </div>
-				<div class="movements__value">Rp. ${movement}</div>
+				<div class="movements__value">${formatCurr(movement, currency, locale)}</div>
 			</div>
 		`;
     // insertAdjacentHTML is method of hte element interface parses the specified text as HTML or XML and inserts the resulting nodes into the DOM tree at a specified postition.
@@ -184,7 +191,7 @@ const displayMovements = function (acc, sort = false) {
 // NOTE: Calculate and display balance
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
-  labelBalance.textContent = `Rp. ${acc.balance}`;
+  labelBalance.textContent = `${formatCurr(acc.balance, acc.currency, acc.locale)}`;
 };
 
 // NOTE: Calculate and display summary
@@ -203,9 +210,9 @@ const calcDisplaySummary = function (acc) {
     .filter((interest, idx, arr) => interest >= 14000)
     .reduce((acc, interest) => acc + interest, 0);
 
-  labelSumIn.textContent = `Rp. ${incomes}`;
-  labelSumOut.textContent = `Rp. ${Math.abs(outcomes)}`;
-  labeSumInterest.textContent = `Rp. ${interest}`;
+  labelSumIn.textContent = `${formatCurr(incomes, acc.currency, acc.locale)}`;
+  labelSumOut.textContent = `${formatCurr(Math.abs(outcomes), acc.currency, acc.locale)}`;
+  labeSumInterest.textContent = `${formatCurr(interest, acc.currency, acc.locale)}`;
 };
 
 // NOTE: Create username
