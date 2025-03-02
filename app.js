@@ -238,8 +238,34 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+// Log out timer
+const startLogOutTimer = function () {
+  //Set time 5 minutes
+  let time = 10;
+
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // When time 0 second, stop the timer and logout the user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = "Login to get started";
+      containerApp.style.opacity = 0;
+    }
+
+    // Decrease time
+    time--;
+  };
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 // NOTE: Login event handler
-let currentAccount;
+let currentAccount, timer;
 loginBtn.addEventListener("click", function (e) {
   // Prevent form submitting
   e.preventDefault();
@@ -276,6 +302,10 @@ loginBtn.addEventListener("click", function (e) {
 
     currDate();
     setInterval(currDate, 1000);
+
+    // Clear timer
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
 
     // Update UI
     updateUI(currentAccount);
